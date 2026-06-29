@@ -27,3 +27,19 @@ This repository contains a first implementation of the V1 portal shell, shared d
 This MVP is static and dependency-free.
 
 Open `/home/runner/work/CAIP/CAIP/src/index.html` in a browser.
+
+## Deploy to GitHub Pages
+
+This repository includes a Pages workflow at:
+
+- `/home/runner/work/CAIP/CAIP/.github/workflows/deploy-pages.yml`
+
+Deployment behavior:
+
+- Triggers on pushes to `main` or `master`
+- Publishes static files from `/home/runner/work/CAIP/CAIP/src`
+
+After merge, enable GitHub Pages in repository settings and select **GitHub Actions** as the source.
+The portal will be available at:
+
+- `https://<owner>.github.io/<repo>/`
