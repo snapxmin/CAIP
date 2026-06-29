@@ -1,0 +1,42 @@
+{
+  "agents": [
+    {
+      "id": "agent_copilot",
+      "name": "GitHub Copilot",
+      "vendor": "GitHub",
+      "supportedTaskTypes": ["bug_fix", "refactor", "test_generation"]
+    }
+  ],
+  "taskTypes": [
+    { "id": "bug_fix", "name": "Bug Fix" },
+    { "id": "refactor", "name": "Refactor" }
+  ],
+  "workflows": [
+    {
+      "id": "wf_java_ms_debug",
+      "name": "Java Microservice Debugging",
+      "version": "1.0.0",
+      "taskTypeId": "bug_fix"
+    }
+  ],
+  "executionRecords": [
+    {
+      "id": "exec_001",
+      "agentId": "agent_copilot",
+      "workflowId": "wf_java_ms_debug",
+      "taskTypeId": "bug_fix",
+      "teamId": "team_platform",
+      "timeCost": { "minutes": 35 },
+      "outputQuality": { "score": 86 },
+      "result": "success"
+    }
+  ],
+  "teams": [
+    {
+      "id": "team_platform",
+      "organizationId": "org_caip",
+      "name": "Platform Team",
+      "domain": "Platform"
+    }
+  ]
+}

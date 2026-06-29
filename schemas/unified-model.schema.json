@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://caip.example/schemas/unified-model.schema.json",
+  "title": "CAIP Unified Data Model",
+  "type": "object",
+  "required": ["agents", "taskTypes", "workflows", "executionRecords", "teams"],
+  "properties": {
+    "agents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "vendor", "supportedTaskTypes"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "vendor": { "type": "string" },
+          "supportedTaskTypes": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "taskTypes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" }
+        }
+      }
+    },
+    "workflows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "version", "taskTypeId"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "version": { "type": "string" },
+          "taskTypeId": { "type": "string" }
+        }
+      }
+    },
+    "executionRecords": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "agentId", "workflowId", "taskTypeId", "teamId", "timeCost", "outputQuality", "result"],
+        "properties": {
+          "id": { "type": "string" },
+          "agentId": { "type": "string" },
+          "workflowId": { "type": "string" },
+          "taskTypeId": { "type": "string" },
+          "teamId": { "type": "string" },
+          "timeCost": {
+            "type": "object",
+            "required": ["minutes"],
+            "properties": {
+              "minutes": { "type": "number", "minimum": 0 }
+            }
+          },
+          "outputQuality": {
+            "type": "object",
+            "required": ["score"],
+            "properties": {
+              "score": { "type": "number", "minimum": 0, "maximum": 100 }
+            }
+          },
+          "result": { "type": "string", "enum": ["success", "failure", "partial"] }
+        }
+      }
+    },
+    "teams": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "organizationId", "name", "domain"],
+        "properties": {
+          "id": { "type": "string" },
+          "organizationId": { "type": "string" },
+          "name": { "type": "string" },
+          "domain": { "type": "string" }
+        }
+      }
+    }
+  }
+}
